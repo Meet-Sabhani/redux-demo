@@ -2,7 +2,6 @@ import actions from "./action";
 
 const initialState = {
   registerData: [],
-  currentUser: {},
 };
 
 const register = (state = initialState, action) => {

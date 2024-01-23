@@ -1,17 +1,15 @@
 import actions from "./action";
 
 const initialState = {
-  registerData: [],
-  currentUser: {},
+  currentUserData: {},
 };
 
 const currentUser = (state = initialState, action) => {
   switch (action.type) {
     case actions.SET_CURRENT_USER_DATA:
       return {
-        currentUser: action.data,
+        currentUserData: action.data,
       };
-
     default:
       return state;
   }
