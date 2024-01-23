@@ -11,7 +11,6 @@ const register = (state = initialState, action) => {
         ...state,
         registerData: action.data,
       };
-
     default:
       return state;
   }
