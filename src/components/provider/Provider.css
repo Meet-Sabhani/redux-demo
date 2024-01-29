@@ -1,0 +1,10 @@
+.provider {
+  padding: 2rem auto;
+  display: flex;
+  justify-content: center;
+}
+
+.textCenter {
+  text-align: center;
+  padding: 10px;
+}

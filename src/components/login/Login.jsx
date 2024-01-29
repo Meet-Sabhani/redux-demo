@@ -57,11 +57,10 @@ const Login = () => {
     if (userMatch) {
       toast.success("Login successfully");
       navigate("/home");
-      dispatch(setCurrentUserData({ userMatch }));
+      dispatch(setCurrentUserData(userMatch));
     } else {
       toast.error("email and password");
     }
-
     console.log("userMatch: ", userMatch);
   };
 

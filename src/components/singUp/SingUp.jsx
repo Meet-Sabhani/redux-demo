@@ -8,7 +8,7 @@ import actions from "../../reducers/action";
 import { toast } from "react-toastify";
 const userTypeOptions = ["user", "Provider"];
 
-const { setLoginData } = actions;
+const { setLoginData, setIdCounterData } = actions;
 
 const formItemLayout = {
   labelCol: {
@@ -46,10 +46,14 @@ const SingUp = () => {
 
   const dispatch = useDispatch();
   const { registerData } = useSelector((s) => s.register);
+  const { idCounterData } = useSelector((s) => s.idCounterIncrement);
   console.log("registerData: ", registerData);
+  console.log("idCounterData: ", idCounterData);
 
   const onFinish = (values) => {
-    dispatch(setLoginData([...registerData, values]));
+    dispatch(setIdCounterData());
+    const addId = { ...values, id: idCounterData };
+    dispatch(setLoginData([...registerData, addId]));
     form.resetFields();
     naviget("/");
     toast.success("Register Successfully");
