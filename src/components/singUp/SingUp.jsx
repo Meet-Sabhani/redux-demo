@@ -8,7 +8,7 @@ import actions from "../../reducers/action";
 import { toast } from "react-toastify";
 const userTypeOptions = ["user", "Provider"];
 
-const { setLoginData, setIdCounterData } = actions;
+const { setLoginData, setUserIdCounterData } = actions;
 
 const formItemLayout = {
   labelCol: {
@@ -47,11 +47,12 @@ const SingUp = () => {
   const dispatch = useDispatch();
   const { registerData } = useSelector((s) => s.register);
   const { idCounterData } = useSelector((s) => s.idCounterIncrement);
+
   console.log("registerData: ", registerData);
   console.log("idCounterData: ", idCounterData);
 
   const onFinish = (values) => {
-    dispatch(setIdCounterData());
+    dispatch(setUserIdCounterData());
     const addId = { ...values, id: idCounterData };
     dispatch(setLoginData([...registerData, addId]));
     form.resetFields();
@@ -104,8 +105,8 @@ const SingUp = () => {
           <Input />
         </Form.Item>
         <Form.Item
-          name="radio"
-          label="Radio"
+          name="userType"
+          label="userType"
           rules={[
             {
               required: true,

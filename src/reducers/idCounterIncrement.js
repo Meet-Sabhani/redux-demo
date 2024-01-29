@@ -1,7 +1,7 @@
 import actions from "./action";
 
 const initialState = {
-  idCounterData: 1,
+  userIdCounterData: 1,
 };
 
 const idCounterIncrement = (state = initialState, action) => {
@@ -9,7 +9,7 @@ const idCounterIncrement = (state = initialState, action) => {
     case actions.SET_ID_COUNTER:
       return {
         ...state,
-        idCounterData: state.idCounterData + 1,
+        userIdCounterData: state.userIdCounterData + 1,
       };
     default:
       return state;

@@ -5,9 +5,6 @@ import { Link } from "react-router-dom";
 import EventCard from "../eventCads/EventCard";
 
 const Home = () => {
-  const { currentUserData } = useSelector((s) => s.currentUser);
-  console.log("currentUserData: ", currentUserData);
-
   return (
     <>
       <Layout>

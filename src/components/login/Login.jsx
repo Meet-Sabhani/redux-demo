@@ -56,8 +56,12 @@ const Login = () => {
 
     if (userMatch) {
       toast.success("Login successfully");
-      navigate("/home");
       dispatch(setCurrentUserData(userMatch));
+      if (userMatch.userType === "user") {
+        navigate("/home");
+      } else {
+        navigate("/provider");
+      }
     } else {
       toast.error("email and password");
     }

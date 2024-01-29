@@ -1,5 +1,4 @@
 import React from "react";
-import "./Provider.css";
 import {
   Button,
   DatePicker,
@@ -8,6 +7,7 @@ import {
   InputNumber,
   Select,
   TimePicker,
+  Flex,
   // TimePicker,
 } from "antd";
 import actions from "../../reducers/action";
@@ -35,15 +35,19 @@ const formItemLayout = {
   },
 };
 
-const { setEventsData } = actions;
+const { setEventsData, setEventIdCounterData } = actions;
 
 const Provider = () => {
   const dispatch = useDispatch();
 
   const { eventsData } = useSelector((s) => s.events);
   const { currentUserData } = useSelector((s) => s.currentUser);
-  console.log("currentUserData: ", currentUserData.id);
+
+  const { idCounterData } = useSelector((s) => s.idCounterIncrement);
   console.log("eventsData: ", eventsData);
+
+  const { eventIdCounterData } = useSelector((s) => s.eventIdCounter);
+  console.log("eventIdCounterData: ", eventIdCounterData);
   const nevigate = useNavigate();
 
   const onFinish = (value) => {
@@ -53,6 +57,8 @@ const Provider = () => {
       moment(value.RangePicker).format("MMM Do YY")
     );
 
+    dispatch(setEventIdCounterData());
+
     const addId = { ...value, providerId: currentUserData.id };
     console.log("addId: ", addId);
     dispatch(setEventsData([...eventsData, addId]));
@@ -61,7 +67,7 @@ const Provider = () => {
   };
 
   return (
-    <div className="provider">
+    <Flex justify="center" style={{ padding: "3%" }}>
       <Form
         {...formItemLayout}
         variant="filled"
@@ -70,7 +76,7 @@ const Provider = () => {
         }}
         onFinish={onFinish}
       >
-        <h1 className="textCenter">Add Event</h1>
+        <h1>Add Event</h1>
         <Form.Item
           label="Name of event"
           name="name"
@@ -189,18 +195,18 @@ const Provider = () => {
           <TimePicker.RangePicker />
         </Form.Item>
 
-        <Form.Item
+        {/* <Form.Item
           wrapperCol={{
             offset: 6,
             span: 16,
           }}
-        >
-          <Button type="primary" htmlType="submit">
-            Submit
-          </Button>
-        </Form.Item>
+        > */}
+        <Button type="primary" htmlType="submit">
+          Submit
+        </Button>
+        {/* </Form.Item> */}
       </Form>
-    </div>
+    </Flex>
   );
 };
 export default Provider;
