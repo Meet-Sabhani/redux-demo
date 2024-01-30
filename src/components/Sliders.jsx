@@ -1,14 +1,24 @@
 import React from "react";
-import { Layout, Menu, theme } from "antd";
+import { Flex, Layout, Menu } from "antd";
 import { useNavigate } from "react-router-dom";
-import { Header } from "antd/es/layout/layout";
 const { Sider } = Layout;
 
 const Sliders = () => {
   const navigate = useNavigate();
   return (
     <Layout>
-      <Header style={{ color: "#fff", width: "100%" }}>logo</Header>
+      <Flex
+        justify="flex-end"
+        align="center"
+        style={{
+          width: "100%",
+          backgroundColor: "#001529",
+          color: "#fff",
+          padding: "3% 8%",
+        }}
+      >
+        <h1>logo</h1>
+      </Flex>
       <Sider
         style={{
           position: "absolute",
@@ -27,11 +37,12 @@ const Sliders = () => {
         <Menu
           theme="dark"
           mode="inline"
-          defaultSelectedKeys={["4"]}
+          defaultSelectedKeys={["home"]}
           items={[
             { label: "home", key: "/home" },
-            // { label: "about", key: "/about" },
+            { label: "Logout", key: "/" },
             { label: "SingUp", key: "/singUp" },
+            { label: "about", key: "/*" },
           ]}
           onClick={({ key }) => {
             navigate(key);

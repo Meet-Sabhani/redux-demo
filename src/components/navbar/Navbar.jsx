@@ -45,23 +45,28 @@ const Navbar = () => {
         <Header>
           <Flex justify="space-between" align="center">
             <h1 style={{ color: "#fff" }}>Logo</h1>
+
             <Menu
               theme="dark"
               mode="horizontal"
               defaultSelectedKeys={["/home"]}
-              items={[
-                { label: "home", key: "/home" },
-                { label: "Logout", key: "/" },
-                { label: "SingUp", key: "/singUp" },
-                { label: "about", key: "/*" },
-              ]}
+              selectedKeys={[window.location.pathname]}
               onClick={({ key }) => {
                 navigate(key);
               }}
-            ></Menu>
-            <Button type="primary" onClick={handleLogout}>
-              Logout
-            </Button>
+            >
+              <Menu.Item key="/home">Home</Menu.Item>
+              <Menu.Item key="/singUp">SignUp</Menu.Item>
+              <Menu.Item key="/about">About</Menu.Item>
+            </Menu>
+            <Flex align="center" gap={6}>
+              <h1 style={{ color: "#fff" }}>
+                Welcome {currentUserData.username}
+              </h1>
+              <Button type="primary" onClick={handleLogout}>
+                Logout
+              </Button>
+            </Flex>
           </Flex>
         </Header>
       )}

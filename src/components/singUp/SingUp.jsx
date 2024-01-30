@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Form, Input } from "antd";
+import { Button, Flex, Form, Input } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 
 import { Radio } from "antd";
@@ -42,26 +42,26 @@ const tailFormItemLayout = {
 };
 const SingUp = () => {
   const [form] = Form.useForm();
-  const naviget = useNavigate();
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
   const { registerData } = useSelector((s) => s.register);
-  const { idCounterData } = useSelector((s) => s.idCounterIncrement);
+  const { userIdCounterData } = useSelector((s) => s.idCounterIncrement);
 
   console.log("registerData: ", registerData);
-  console.log("idCounterData: ", idCounterData);
+  console.log("idCounterData: ", userIdCounterData);
 
   const onFinish = (values) => {
     dispatch(setUserIdCounterData());
-    const addId = { ...values, id: idCounterData };
+    const addId = { ...values, id: userIdCounterData };
     dispatch(setLoginData([...registerData, addId]));
     form.resetFields();
-    naviget("/");
+    navigate("/");
     toast.success("Register Successfully");
   };
 
   return (
-    <div className="container">
+    <Flex justify="center" align="center" style={{padding:'4%'}} >
       <Form
         {...formItemLayout}
         form={form}
@@ -162,7 +162,7 @@ const SingUp = () => {
           already have an account <Link to="/">Login</Link> here
         </div>
       </Form>
-    </div>
+    </Flex>
   );
 };
 

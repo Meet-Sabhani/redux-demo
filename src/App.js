@@ -9,16 +9,18 @@ import Home from "./components/home/Home";
 import Provider from "./components/provider/Provider";
 import Navbar from "./components/navbar/Navbar";
 import Sliders from "./components/Sliders";
+import AddEventData from "./components/provider/AddEventData";
 
 function App() {
   return (
     <>
-    <Navbar/>
+      <Navbar />
       <Routes>
         <Route path="/singUp" element={<SingUp />} />
         <Route path="/" element={<Login />} />
         <Route path="/home" element={<Home />} />
         <Route path="/provider" element={<Provider />} />
+        <Route path="/addEventData" element={<AddEventData />} />
         <Route path="/about" element={<Sliders />} />
         <Route path="*" element={<div>404 page not found</div>} />
       </Routes>
