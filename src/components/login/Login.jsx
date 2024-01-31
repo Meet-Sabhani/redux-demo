@@ -41,18 +41,15 @@ const { setCurrentUserData } = actions;
 
 const Login = () => {
   const { registerData } = useSelector((s) => s.register);
-  console.log("registerData: ", registerData);
   const [form] = Form.useForm();
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const onFinish = (values) => {
-    console.log("values: ", values);
     const userMatch = registerData.find(
       (user) => user.email === values.email && user.password === values.password
     );
-    console.log("userMatch: ", userMatch);
 
     if (userMatch) {
       toast.success("Login successfully");
@@ -65,7 +62,6 @@ const Login = () => {
     } else {
       toast.error("email and password");
     }
-    console.log("userMatch: ", userMatch);
   };
 
   return (

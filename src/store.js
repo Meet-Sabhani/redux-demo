@@ -5,6 +5,7 @@ import currentUser from "./reducers/currentUser";
 import events from "./reducers/events";
 import idCounterIncrement from "./reducers/idCounterIncrement";
 import eventIdCounter from "./reducers/eventIdCounter";
+import booking from "./reducers/booking";
 import { combineReducers, createStore } from "redux";
 
 const combinedReducer = combineReducers({
@@ -13,6 +14,7 @@ const combinedReducer = combineReducers({
   idCounterIncrement,
   events,
   eventIdCounter,
+  booking,
 });
 const persistConfig = {
   key: "root",
@@ -23,6 +25,7 @@ const persistConfig = {
     "idCounterIncrement",
     "events",
     "eventIdCounter",
+    "booking",
   ],
 };
 const persistedReducer = persistReducer(persistConfig, combinedReducer);

@@ -4,6 +4,7 @@ const actions = {
   SET_ID_COUNTER: "SET_ID_COUNTER",
   SET_EVENTS_DATA: "SET_EVENTS_DATA",
   SET_EVENT_ID_COUNTER: " SET_EVENT_ID_COUNTER",
+  SET_BOOKING_DATA: " SET_BOOKING_DATA",
 
   setLoginData: (data) => ({
     type: actions.SET_LOGIN_DATA,
@@ -23,6 +24,10 @@ const actions = {
   }),
   setEventIdCounterData: (data) => ({
     type: actions.SET_EVENT_ID_COUNTER,
+    data,
+  }),
+  setBookingData: (data) => ({
+    type: actions.SET_BOOKING_DATA,
     data,
   }),
 };

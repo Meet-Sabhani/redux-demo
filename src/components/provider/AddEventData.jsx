@@ -55,8 +55,6 @@ const AddEventData = () => {
     const endTime = formatTime(value.timeRange[1].toDate());
 
     const slots = slotsCalculate(startTime, endTime, value.duration);
-    console.log("slots: ", slots);
-    slots.forEach((slot) => console.log(slot));
     const addId = {
       ...value,
       providerId: currentUserData.id,

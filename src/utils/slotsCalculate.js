@@ -1,5 +1,4 @@
 export default function slotsCalculate(startTime, endTime, interval) {
-  console.log("startTime: ", typeof startTime);
 
   const startMinutes = parseTime(startTime);
   const endMinutes = parseTime(endTime);

@@ -48,9 +48,6 @@ const SingUp = () => {
   const { registerData } = useSelector((s) => s.register);
   const { userIdCounterData } = useSelector((s) => s.idCounterIncrement);
 
-  console.log("registerData: ", registerData);
-  console.log("idCounterData: ", userIdCounterData);
-
   const onFinish = (values) => {
     dispatch(setUserIdCounterData());
     const addId = { ...values, id: userIdCounterData };
@@ -70,6 +67,7 @@ const SingUp = () => {
         initialValues={{
           residence: ["zhejiang", "hangzhou", "xihu"],
           prefix: "86",
+          userType: "user",
         }}
         style={{
           width: 400,
@@ -114,7 +112,7 @@ const SingUp = () => {
             },
           ]}
         >
-          <Radio.Group options={userTypeOptions} />
+          <Radio.Group options={userTypeOptions} defaultValue="user" />
         </Form.Item>
         <Form.Item
           name="password"

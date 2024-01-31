@@ -13,7 +13,6 @@ const Navbar = () => {
   console.log("width: ", width);
 
   const { currentUserData } = useSelector((s) => s.currentUser);
-  console.log("currentUserData: ", currentUserData);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
