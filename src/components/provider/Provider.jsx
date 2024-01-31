@@ -1,5 +1,4 @@
 import React from "react";
-import AddEventData from "./AddEventData";
 import EventCard from "../eventCads/EventCard";
 import { Button, Flex } from "antd";
 import { Link } from "react-router-dom";

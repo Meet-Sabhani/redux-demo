@@ -61,7 +61,7 @@ const Navbar = () => {
             </Menu>
             <Flex align="center" gap={6}>
               <h1 style={{ color: "#fff" }}>
-                Welcome {currentUserData.username}
+                Welcome, {currentUserData.username}
               </h1>
               <Button type="primary" onClick={handleLogout}>
                 Logout

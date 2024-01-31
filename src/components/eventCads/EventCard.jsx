@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Button, Card, Col, Flex, Row, Typography } from "antd";
+import { Button, Card, Col, Flex, Image, Row, Typography } from "antd";
 import { useSelector } from "react-redux";
 import moment from "moment";
+import { Link } from "react-router-dom";
 
 const cardStyle = {
   height: 250,
@@ -10,8 +11,8 @@ const cardStyle = {
 };
 
 const imgStyle = {
-  display: "block",
-  width: "50%",
+  // display: "block",
+  width: "100%",
   height: 250,
   objectFit: "cover",
 };
@@ -51,7 +52,14 @@ const EventCard = () => {
             }}
           >
             <Flex justify="space-between">
-              <img alt="avatar" src={e.image} style={imgStyle} />
+              <div style={{width:'50%'}}>
+                <Image
+                  alt="avatar"
+                  fallback="https://t3.ftcdn.net/jpg/03/45/05/92/360_F_345059232_CPieT8RIWOUk4JqBkkWkIETYAkmz2b75.jpg"
+                  src={e.image}
+                  style={imgStyle}
+                />
+              </div>
               <Flex
                 vertical
                 align="center"
@@ -70,7 +78,11 @@ const EventCard = () => {
                   {moment(e.timeRange[1]).format("LTS")}
                 </h4>
                 <h2>price:{e.price}</h2>
-                <Button type="primary">buy</Button>
+                <Button type="primary">
+                  <Link style={{ color: "#fff" }} to={`/detail/${e.id}`}>
+                    buy
+                  </Link>
+                </Button>
               </Flex>
             </Flex>
           </Card>

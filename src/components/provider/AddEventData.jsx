@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   Button,
   DatePicker,
@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import moment from "moment";
 import { useNavigate } from "react-router-dom";
+import slotsCalculate from "../../utils/slotsCalculate";
 
 const formItemLayout = {
   labelCol: {
@@ -46,37 +47,44 @@ const AddEventData = () => {
   const navigate = useNavigate();
 
   const onFinish = (value) => {
-    console.log(
-      "value: ",
-      value,
-      moment(value.RangePicker).format("MMM Do YY")
-    );
-
     dispatch(setEventIdCounterData());
 
+    const formatTime = (time) => moment(time, "h:mm A").format("HH:mm");
+
+    const startTime = formatTime(value.timeRange[0].toDate());
+    const endTime = formatTime(value.timeRange[1].toDate());
+
+    const slots = slotsCalculate(startTime, endTime, value.duration);
+    console.log("slots: ", slots);
+    slots.forEach((slot) => console.log(slot));
     const addId = {
       ...value,
       providerId: currentUserData.id,
       id: eventIdCounterData,
+      slots: slots,
     };
+
     console.log("addId: ", addId);
     dispatch(setEventsData([...eventsData, addId]));
     toast.success("event add successfully");
-    navigate("/home");
+    navigate("/provider");
   };
+
   return (
     <>
-      <Flex justify="center" style={{ padding: "3%" }}>
+      <Flex justify="center">
         <Form
           {...formItemLayout}
           variant="filled"
           style={{
-            maxWidth: 600,
+            width: 433,
           }}
           onFinish={onFinish}
           initialValues={{ duration: "30" }}
         >
-          <h1>Add Event</h1>
+          <Flex justify="center" style={{ padding: "5%" }}>
+            <h1>Add Event</h1>
+          </Flex>
           <Form.Item
             label="Name of event"
             name="name"
@@ -133,42 +141,6 @@ const AddEventData = () => {
             <Input.TextArea />
           </Form.Item>
 
-          {/* <Form.Item
-            label="duration"
-            name="duration"
-            rules={[
-              {
-                required: true,
-                message: "Please input!",
-              },
-            ]}
-          >
-            <Select
-              style={{
-                width: 120,
-              }}
-              defaultValue="30"
-              options={[
-                {
-                  value: "30",
-                  label: "30 minis",
-                },
-                {
-                  value: "60",
-                  label: "1 hours",
-                },
-                {
-                  value: "90",
-                  label: "1.30 hours",
-                },
-                {
-                  value: "120",
-                  label: "2 hours",
-                },
-              ]}
-            />
-          </Form.Item> */}
-
           <Form.Item
             label="duration"
             name="duration"
@@ -218,16 +190,11 @@ const AddEventData = () => {
             <TimePicker.RangePicker />
           </Form.Item>
 
-          {/* <Form.Item
-          wrapperCol={{
-            offset: 6,
-            span: 16,
-          }}
-        > */}
-          <Button type="primary" htmlType="submit">
-            Submit
-          </Button>
-          {/* </Form.Item> */}
+          <Flex justify="center">
+            <Button type="primary" htmlType="submit">
+              Submit
+            </Button>
+          </Flex>
         </Form>
       </Flex>
     </>

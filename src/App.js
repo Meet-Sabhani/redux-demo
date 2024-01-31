@@ -10,6 +10,7 @@ import Provider from "./components/provider/Provider";
 import Navbar from "./components/navbar/Navbar";
 import Sliders from "./components/Sliders";
 import AddEventData from "./components/provider/AddEventData";
+import EventPage from "./components/eventCads/EventPage";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/provider" element={<Provider />} />
         <Route path="/addEventData" element={<AddEventData />} />
+        <Route path="/detail/:productId" element={<EventPage />} />
         <Route path="/about" element={<Sliders />} />
         <Route path="*" element={<div>404 page not found</div>} />
       </Routes>

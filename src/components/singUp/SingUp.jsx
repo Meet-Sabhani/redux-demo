@@ -61,7 +61,7 @@ const SingUp = () => {
   };
 
   return (
-    <Flex justify="center" align="center" style={{padding:'4%'}} >
+    <Flex justify="center" align="center" style={{ padding: "" }}>
       <Form
         {...formItemLayout}
         form={form}
@@ -72,7 +72,7 @@ const SingUp = () => {
           prefix: "86",
         }}
         style={{
-          maxWidth: 600,
+          width: 400,
         }}
         scrollToFirstError
       >
@@ -158,9 +158,11 @@ const SingUp = () => {
             Register
           </Button>
         </Form.Item>
-        <div>
-          already have an account <Link to="/">Login</Link> here
-        </div>
+        <Flex justify="center">
+          <p>
+            already have an account <Link to="/"> Login </Link> here
+          </p>
+        </Flex>
       </Form>
     </Flex>
   );
