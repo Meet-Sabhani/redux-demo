@@ -11,7 +11,6 @@ const events = (state = initialState, action) => {
         ...state,
         eventsData: action.data,
       };
-
     case actions.DELETE_EVENT:
       const updatedEvents = state.eventsData.filter(
         (event) => event.id !== action.data

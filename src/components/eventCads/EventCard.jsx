@@ -88,6 +88,15 @@ const EventCard = () => {
                       <Button type="primary" onClick={() => handleDelete(e.id)}>
                         Delate
                       </Button>
+                      <Button type="primary">
+                        <Link
+                          type="primary"
+                          style={{ color: "#fff" }}
+                          to={`/detail/${e.id}`}
+                        >
+                          Detail
+                        </Link>
+                      </Button>
                     </Flex>
                   ) : (
                     <Button type="primary">
