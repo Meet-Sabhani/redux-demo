@@ -28,6 +28,7 @@ const persistConfig = {
     "booking",
   ],
 };
+
 const persistedReducer = persistReducer(persistConfig, combinedReducer);
 export const store = createStore(persistedReducer);
 export const persistor = persistStore(store);

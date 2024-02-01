@@ -11,6 +11,7 @@ import Navbar from "./components/navbar/Navbar";
 import Sliders from "./components/Sliders";
 import AddEventData from "./components/provider/AddEventData";
 import EventPage from "./components/eventCads/EventPage";
+import Bookings from "./components/bookings/Bookings";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/addEventData" element={<AddEventData />} />
         <Route path="/detail/:productId" element={<EventPage />} />
         <Route path="/about" element={<Sliders />} />
+        <Route path="/bookings" element={<Bookings />} />
         <Route path="*" element={<div>404 page not found</div>} />
       </Routes>
       <ToastContainer

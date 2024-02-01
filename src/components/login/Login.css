@@ -1,13 +1,13 @@
-.container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+.loader-overlay {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
   height: 100vh;
-}
-
-@media (max-width: 600px) {
-  .container {
-    height: unset;
-  }
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -1,5 +1,5 @@
-import React from "react";
-import { Button, Form, Input } from "antd";
+import React, { useState } from "react";
+import { Button, Flex, Form, Input, Spin } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -41,6 +41,9 @@ const { setCurrentUserData } = actions;
 
 const Login = () => {
   const { registerData } = useSelector((s) => s.register);
+
+  const [loading, setLoading] = useState(false);
+
   const [form] = Form.useForm();
 
   const navigate = useNavigate();
@@ -52,75 +55,92 @@ const Login = () => {
     );
 
     if (userMatch) {
+      setLoading(true);
       toast.success("Login successfully");
       dispatch(setCurrentUserData(userMatch));
-      if (userMatch.userType === "user") {
-        navigate("/home");
-      } else {
-        navigate("/provider");
-      }
+
+      setTimeout(() => {
+        setLoading(false);
+        if (userMatch.userType === "user") {
+          navigate("/home");
+          setLoading(false);
+        } else {
+          navigate("/provider");
+          setLoading(false);
+        }
+      }, 500);
     } else {
       toast.error("email and password");
     }
   };
 
   return (
-    <div className="container">
-      <Form
-        {...formItemLayout}
-        form={form}
-        name="register"
-        onFinish={onFinish}
-        initialValues={{
-          residence: ["zhejiang", "hangzhou", "xihu"],
-          prefix: "86",
-        }}
-        style={{
-          maxWidth: 600,
-        }}
-        scrollToFirstError
-      >
-        <Form.Item
-          name="email"
-          label="E-mail"
-          rules={[
-            {
-              type: "email",
-              message: "The input is not valid E-mail!",
-            },
-            {
-              required: true,
-              message: "Please input your E-mail!",
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
-
-        <Form.Item
-          name="password"
-          label="Password"
-          rules={[
-            {
-              required: true,
-              message: "Please input your password!",
-            },
-          ]}
-          hasFeedback
-        >
-          <Input.Password />
-        </Form.Item>
-
-        <Form.Item {...tailFormItemLayout}>
-          <Button type="primary" htmlType="submit">
-            Login
-          </Button>
-        </Form.Item>
-        <div>
-          if you dont ahave accounyt <Link to="/singUp">SingUp</Link> here
+    <Flex
+      justify="center"
+      align="center"
+      style={{ minHeight: "80vh", padding: "4% 10%" }}
+    >
+      {loading ? (
+        <div className="loader-overlay">
+          <Spin size="large" />
         </div>
-      </Form>
-    </div>
+      ) : (
+        <Form
+          {...formItemLayout}
+          form={form}
+          name="register"
+          onFinish={onFinish}
+          initialValues={{
+            residence: ["zhejiang", "hangzhou", "xihu"],
+            prefix: "86",
+          }}
+          style={{
+            maxWidth: 600,
+          }}
+          scrollToFirstError
+        >
+          <Form.Item
+            name="email"
+            label="E-mail"
+            rules={[
+              {
+                type: "email",
+                message: "The input is not valid E-mail!",
+              },
+              {
+                required: true,
+                message: "Please input your E-mail!",
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+
+          <Form.Item
+            name="password"
+            label="Password"
+            rules={[
+              {
+                required: true,
+                message: "Please input your password!",
+              },
+            ]}
+            hasFeedback
+          >
+            <Input.Password />
+          </Form.Item>
+
+          <Form.Item {...tailFormItemLayout}>
+            <Button type="primary" htmlType="submit">
+              Login
+            </Button>
+          </Form.Item>
+          <div>
+            if you dont ahave accounyt <Link to="/singUp">SingUp</Link> here
+          </div>
+        </Form>
+      )}
+    </Flex>
   );
 };
 

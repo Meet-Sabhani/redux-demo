@@ -7,9 +7,12 @@ const Home = () => {
   return (
     <>
       <Layout>
-        <Flex justify="center" style={{ padding: "2%" }}>
+        <Flex justify="center" gap={6} style={{ padding: "2%" } }>
           <Button type="primary">
-            <Link to={"/provider"}>provider</Link>
+            <Link to={"/provider"}>Provider</Link>
+          </Button>
+          <Button type="primary">
+            <Link to={"/bookings"}>Bookings</Link>
           </Button>
         </Flex>
         <EventCard />

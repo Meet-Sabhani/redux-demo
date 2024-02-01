@@ -58,7 +58,7 @@ const SingUp = () => {
   };
 
   return (
-    <Flex justify="center" align="center" style={{ padding: "" }}>
+    <Flex justify="center" align="center" style={{ padding: "4% 10%" }}>
       <Form
         {...formItemLayout}
         form={form}

@@ -1,4 +1,4 @@
-import { Button, Card, Col, Flex, Image, Row, Typography } from "antd";
+import { Button, Card, Col, Flex, Image, Row } from "antd";
 import moment from "moment";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -36,6 +36,7 @@ const EventPage = () => {
   const matchingEvent = eventsData.find(
     (item) => item.id === parseInt(productId)
   );
+
   console.log("matchingEvent: ", matchingEvent);
 
   const dispatch = useDispatch();

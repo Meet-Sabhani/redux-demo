@@ -5,6 +5,7 @@ const actions = {
   SET_EVENTS_DATA: "SET_EVENTS_DATA",
   SET_EVENT_ID_COUNTER: " SET_EVENT_ID_COUNTER",
   SET_BOOKING_DATA: " SET_BOOKING_DATA",
+  DELETE_EVENT: "DELETE_EVENT",
 
   setLoginData: (data) => ({
     type: actions.SET_LOGIN_DATA,
@@ -22,6 +23,7 @@ const actions = {
     type: actions.SET_EVENTS_DATA,
     data,
   }),
+  setDeleteEvent: (data) => ({ type: actions.DELETE_EVENT, data }),
   setEventIdCounterData: (data) => ({
     type: actions.SET_EVENT_ID_COUNTER,
     data,
