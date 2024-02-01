@@ -2,7 +2,7 @@ import { Button, Card, Col, Flex, Image, Row } from "antd";
 import moment from "moment";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "./EventPage.css";
 import { toast } from "react-toastify";
 import actions from "../../reducers/action";
@@ -20,7 +20,7 @@ const imgStyle = {
   objectFit: "cover",
 };
 
-const { setBookingData, setEventsData } = actions;
+const { setBookingData, setEventsData, setDeleteEvent } = actions;
 
 const EventPage = () => {
   const { productId } = useParams();
@@ -103,6 +103,10 @@ const EventPage = () => {
     }
   };
 
+  const handleDelete = (eventId) => {
+    dispatch(setDeleteEvent(eventId));
+  };
+
   return (
     <Flex justify="center" style={{ padding: "4% 8%" }}>
       <Card
@@ -149,9 +153,21 @@ const EventPage = () => {
               </Flex>
               <h2>price:{matchingEvent.price}</h2>
 
-              <Button type="primary" onClick={buySlot}>
-                buy
-              </Button>
+              {currentUserData.userType === "Provider" ? (
+                <Flex gap={6}>
+                  <Button type="primary">Edit</Button>
+                  <Button
+                    type="primary"
+                    onClick={() => handleDelete(matchingEvent.id)}
+                  >
+                    Delate
+                  </Button>
+                </Flex>
+              ) : (
+                <Button type="primary" onClick={buySlot}>
+                  buy
+                </Button>
+              )}
             </Flex>
           </Col>
         </Row>

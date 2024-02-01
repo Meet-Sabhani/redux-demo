@@ -84,7 +84,9 @@ const EventCard = () => {
 
                   {currentUserData.userType === "Provider" ? (
                     <Flex gap={6}>
-                      <Button type="primary">Edit</Button>
+                      <Button type="primary">
+                        <Link to={`/addEventData/${e.id}`}> Edit </Link>
+                      </Button>
                       <Button type="primary" onClick={() => handleDelete(e.id)}>
                         Delate
                       </Button>

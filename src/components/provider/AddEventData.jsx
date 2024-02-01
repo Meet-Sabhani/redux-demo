@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Button,
   DatePicker,
@@ -8,12 +8,13 @@ import {
   Select,
   TimePicker,
   Flex,
+  Checkbox,
 } from "antd";
 import actions from "../../reducers/action";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import moment from "moment";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import slotsCalculate from "../../utils/slotsCalculate";
 
 const formItemLayout = {
@@ -46,6 +47,35 @@ const AddEventData = () => {
   const { eventIdCounterData } = useSelector((s) => s.eventIdCounter);
   const navigate = useNavigate();
 
+  const { eventId } = useParams();
+  console.log("eventId: ", eventId);
+
+  const matchingEvent = eventsData.find(
+    (item) => item.id === parseInt(eventId)
+  );
+  console.log("matchingEvent: ", matchingEvent);
+
+  const [form] = Form.useForm();
+
+  useEffect(() => {
+    console.log("useEffect is running");
+    if (matchingEvent) {
+      console.log("cLLL");
+      form.setFieldsValue({
+        name: matchingEvent?.name,
+        image: matchingEvent?.image,
+        price: matchingEvent?.price,
+        description: matchingEvent?.description,
+        duration: matchingEvent?.duration,
+        date: moment(matchingEvent?.date),
+        timeRange: [
+          moment(matchingEvent?.startTime, "HH:mm"),
+          moment(matchingEvent?.endTime, "HH:mm"),
+        ],
+      });
+    }
+  }, [matchingEvent, form]);
+
   const onFinish = (value) => {
     dispatch(setEventIdCounterData());
 
@@ -55,16 +85,24 @@ const AddEventData = () => {
     const endTime = formatTime(value.timeRange[1].toDate());
 
     const slots = slotsCalculate(startTime, endTime, value.duration);
-    const addId = {
+    const updatedEvent = {
       ...value,
       providerId: currentUserData.id,
-      id: eventIdCounterData,
+      id: eventId ? parseInt(eventId) : eventIdCounterData,
       slots: slots,
     };
 
-    console.log("addId: ", addId);
-    dispatch(setEventsData([...eventsData, addId]));
-    toast.success("event add successfully");
+    if (eventId) {
+      const updatedEventsData = eventsData.map((event) =>
+        event.id === parseInt(eventId) ? updatedEvent : event
+      );
+      dispatch(setEventsData(updatedEventsData));
+      toast.success("Event updated successfully");
+    } else {
+      dispatch(setEventsData([...eventsData, updatedEvent]));
+      toast.success("Event added successfully");
+    }
+
     navigate("/provider");
   };
 
@@ -72,6 +110,7 @@ const AddEventData = () => {
     <>
       <Flex justify="center">
         <Form
+          form={form}
           {...formItemLayout}
           variant="filled"
           style={{

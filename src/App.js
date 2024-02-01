@@ -22,6 +22,7 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/home" element={<Home />} />
         <Route path="/provider" element={<Provider />} />
+        <Route path="/addEventData/:eventId" element={<AddEventData />} />
         <Route path="/addEventData" element={<AddEventData />} />
         <Route path="/detail/:productId" element={<EventPage />} />
         <Route path="/about" element={<Sliders />} />
