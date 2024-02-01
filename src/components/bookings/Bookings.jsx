@@ -12,10 +12,11 @@ const Bookings = () => {
   const filterData = bookingData.filter(
     (bookings) => bookings.user.id === currentUserData.id
   );
+
   console.log("filterData: ", filterData);
 
   return (
-    <>
+    <Flex vertical style={{ padding: "3% 10%" }}>
       <h1>Bookings</h1>
       {currentUserData.userType === "Provider" ? (
         <Row gutter={[16, 16]}>
@@ -54,7 +55,7 @@ const Bookings = () => {
           })}
         </Row>
       )}
-    </>
+    </Flex>
   );
 };
 

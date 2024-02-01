@@ -3,7 +3,7 @@ import { Button, Card, Col, Flex, Image, Row, Typography } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 import { Link } from "react-router-dom";
-import actions from "../../reducers/action";
+import actions from "../../action/actions";
 
 const cardStyle = {
   height: "fit-content",

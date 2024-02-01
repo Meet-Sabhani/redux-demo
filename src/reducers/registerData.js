@@ -1,4 +1,4 @@
-import actions from "./action";
+import actions from "../action/actions";
 
 const initialState = {
   registerData: [],

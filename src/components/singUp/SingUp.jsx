@@ -4,7 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 
 import { Radio } from "antd";
 import { useDispatch, useSelector } from "react-redux";
-import actions from "../../reducers/action";
+import actions from "../../action/actions";
+
 import { toast } from "react-toastify";
 const userTypeOptions = ["user", "Provider"];
 

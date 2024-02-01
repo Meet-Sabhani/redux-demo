@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import {
   Button,
   DatePicker,
@@ -8,9 +8,9 @@ import {
   Select,
   TimePicker,
   Flex,
-  Checkbox,
 } from "antd";
-import actions from "../../reducers/action";
+import actions from "../../action/actions";
+
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import moment from "moment";
@@ -50,9 +50,7 @@ const AddEventData = () => {
   const { eventId } = useParams();
   console.log("eventId: ", eventId);
 
-  const matchingEvent = eventsData.find(
-    (item) => item.id === parseInt(eventId)
-  );
+  const matchingEvent = eventsData.find((item) => item.id === +eventId);
   console.log("matchingEvent: ", matchingEvent);
 
   const [form] = Form.useForm();
@@ -120,7 +118,7 @@ const AddEventData = () => {
           initialValues={{ duration: "30" }}
         >
           <Flex justify="center" style={{ padding: "5%" }}>
-            <h1>Add Event</h1>
+            <h1>{matchingEvent ? "Edit" : "Add"} Event</h1>
           </Flex>
           <Form.Item
             label="Name of event"

@@ -3,7 +3,7 @@ import { Flex, Layout, Menu } from "antd";
 import { useNavigate } from "react-router-dom";
 const { Sider } = Layout;
 
-const Sliders = () => {
+const Slider = () => {
   const navigate = useNavigate();
   return (
     <Layout>
@@ -52,4 +52,4 @@ const Sliders = () => {
     </Layout>
   );
 };
-export default Sliders;
+export default Slider;

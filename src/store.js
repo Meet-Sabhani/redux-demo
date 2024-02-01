@@ -1,6 +1,6 @@
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import register from "./reducers/register";
+import register from "./reducers/registerData";
 import currentUser from "./reducers/currentUser";
 import events from "./reducers/events";
 import idCounterIncrement from "./reducers/idCounterIncrement";

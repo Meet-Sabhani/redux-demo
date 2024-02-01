@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import actions from "../../reducers/action";
+import actions from "../../action/actions";
 
 const formItemLayout = {
   labelCol: {

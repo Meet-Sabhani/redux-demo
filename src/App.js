@@ -8,10 +8,10 @@ import "react-toastify/dist/ReactToastify.css";
 import Home from "./components/home/Home";
 import Provider from "./components/provider/Provider";
 import Navbar from "./components/navbar/Navbar";
-import Sliders from "./components/Sliders";
 import AddEventData from "./components/provider/AddEventData";
 import EventPage from "./components/eventCads/EventPage";
 import Bookings from "./components/bookings/Bookings";
+import Slider from "./components/sliders/Slider";
 
 function App() {
   return (
@@ -25,7 +25,7 @@ function App() {
         <Route path="/addEventData/:eventId" element={<AddEventData />} />
         <Route path="/addEventData" element={<AddEventData />} />
         <Route path="/detail/:productId" element={<EventPage />} />
-        <Route path="/about" element={<Sliders />} />
+        <Route path="/about" element={<Slider />} />
         <Route path="/bookings" element={<Bookings />} />
         <Route path="*" element={<div>404 page not found</div>} />
       </Routes>

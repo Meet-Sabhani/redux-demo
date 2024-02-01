@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import "./EventPage.css";
 import { toast } from "react-toastify";
-import actions from "../../reducers/action";
+import actions from "../../action/actions";
 
 const cardStyle = {
   height: "fit-content",
@@ -155,7 +155,9 @@ const EventPage = () => {
 
               {currentUserData.userType === "Provider" ? (
                 <Flex gap={6}>
-                  <Button type="primary">Edit</Button>
+                  <Button type="primary">
+                    <Link to={`/addEventData/${matchingEvent.id}`}>Edit</Link>
+                  </Button>
                   <Button
                     type="primary"
                     onClick={() => handleDelete(matchingEvent.id)}
