@@ -43,7 +43,9 @@ const Navbar = () => {
       ) : (
         <Header>
           <Flex justify="space-between" align="center">
-            <h1 style={{ color: "#fff" }}>Logo</h1>
+            <h1 style={{ color: "#fff" }}>
+              <Link to={"/home"}>Venus</Link>
+            </h1>
 
             <Menu
               theme="dark"

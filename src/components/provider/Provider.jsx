@@ -1,8 +1,9 @@
 import React from "react";
 import EventCard from "../eventCads/EventCard";
-import { Button, Flex } from "antd";
+import { BackTop, Button, Flex, FloatButton } from "antd";
 import { Link } from "react-router-dom";
 import useCheckLogin from "../../utils/CheckLogin";
+import { VerticalAlignTopOutlined } from "@ant-design/icons";
 
 const Provider = () => {
   useCheckLogin();
@@ -17,6 +18,8 @@ const Provider = () => {
         </Button>
       </Flex>
       <EventCard />
+
+      <BackTop></BackTop>
     </>
   );
 };

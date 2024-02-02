@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 import { Link } from "react-router-dom";
 import actions from "../../action/actions";
+import BookingCard from "../../styledCommponets/BookingCard";
 
 const cardStyle = {
   height: "fit-content",

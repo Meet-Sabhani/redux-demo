@@ -11,7 +11,7 @@ const BookingCard = styled.div`
   gap: 2%;
 
   &:hover {
-    scale: 1.04;
+    scale: 1.02;
     background-color: #dadada;
   }
 
