@@ -14,6 +14,7 @@ import moment from "moment";
 import { Link } from "react-router-dom";
 import actions from "../../action/actions";
 import BookingCard from "../../styledCommponets/BookingCard";
+import CardWrap from "../../styledCommponets/CardWrap";
 
 const cardStyle = {
   height: "fit-content",
@@ -71,7 +72,7 @@ const EventCard = () => {
                 padding: 0,
               }}
             >
-              <Row gutter={[6, 6]}>
+              <Row>
                 <Col
                   xs={24}
                   sm={24}
@@ -87,53 +88,58 @@ const EventCard = () => {
                   />
                 </Col>
                 <Col xs={24} sm={24} md={12} lg={12}>
-                  <Flex
-                    vertical
-                    align="center"
-                    justify="center"
-                    style={{
-                      padding: "3% 0",
-                    }}
-                  >
-                    <Typography.Title level={3}>{e.name}</Typography.Title>
-                    <p>{e.description}</p>
-                    <h3>duration: {e.duration}</h3>
-                    <h4>{moment(e.date).format("L")}</h4>
-                    <h4>
-                      {moment(e.timeRange[0]).format("LTS")} -{" "}
-                      {moment(e.timeRange[1]).format("LTS")}
-                    </h4>
-                    <h2>price:{e.price}</h2>
+                  <CardWrap>
+                    <Flex
+                      vertical
+                      align="center"
+                      justify="center"
+                      style={{
+                        padding: "3% 0",
+                      }}
+                    >
+                      <Typography.Title level={3}>{e.name}</Typography.Title>
+                      <p>{e.description}</p>
+                      <h3>duration: {e.duration}</h3>
+                      <h4>{moment(e.date).format("L")}</h4>
+                      <h4>
+                        {moment(e.timeRange[0]).format("LTS")} -{" "}
+                        {moment(e.timeRange[1]).format("LTS")}
+                      </h4>
+                      <h2>price:{e.price}</h2>
 
-                    {currentUserData.userType === "Provider" ? (
-                      <Flex gap={6}>
-                        <Button type="primary">
-                          <Link to={`/addEventData/${e.id}`}> Edit </Link>
-                        </Button>
-                        <Button
-                          type="primary"
-                          onClick={() => handleDelete(e.id)}
-                        >
-                          Delate
-                        </Button>
+                      {currentUserData.userType === "Provider" ? (
+                        <Flex gap={6} wrap="wrap" justify="center">
+                          <Button type="primary">
+                            <Link to={`/addEventData/${e.id}`}> Edit </Link>
+                          </Button>
+                          <Button
+                            type="primary"
+                            onClick={() => handleDelete(e.id)}
+                          >
+                            Delate
+                          </Button>
+                          <Button type="primary">
+                            <Link
+                              type="primary"
+                              style={{ color: "#fff" }}
+                              to={`/detail/${e.id}`}
+                            >
+                              Detail
+                            </Link>
+                          </Button>
+                        </Flex>
+                      ) : (
                         <Button type="primary">
                           <Link
-                            type="primary"
                             style={{ color: "#fff" }}
                             to={`/detail/${e.id}`}
                           >
-                            Detail
+                            buy
                           </Link>
                         </Button>
-                      </Flex>
-                    ) : (
-                      <Button type="primary">
-                        <Link style={{ color: "#fff" }} to={`/detail/${e.id}`}>
-                          buy
-                        </Link>
-                      </Button>
-                    )}
-                  </Flex>
+                      )}
+                    </Flex>
+                  </CardWrap>
                 </Col>
               </Row>
             </Card>
