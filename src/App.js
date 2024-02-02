@@ -1,5 +1,4 @@
 import React from "react";
-import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import SingUp from "./components/singUp/SingUp";
 import Login from "./components/login/Login";
@@ -12,10 +11,20 @@ import AddEventData from "./components/provider/AddEventData";
 import EventPage from "./components/eventCads/EventPage";
 import Bookings from "./components/bookings/Bookings";
 import Slider from "./components/sliders/Slider";
+import GlobalStyle from "./styledCommponets/GlobalStyle";
+import { ThemeProvider } from "styled-components";
 
 function App() {
+  const theme = {
+    colors: {
+      bg: "#fff",
+      card: "#EFEFEF",
+    },
+    media: { mobile: "600px", tab: "998px" },
+  };
   return (
-    <>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
       <Navbar />
       <Routes>
         <Route path="/singUp" element={<SingUp />} />
@@ -41,7 +50,7 @@ function App() {
         pauseOnHover
         theme="light"
       />
-    </>
+    </ThemeProvider>
   );
 }
 

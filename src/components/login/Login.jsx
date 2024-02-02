@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Button, Flex, Form, Input, Spin } from "antd";
+import { Button, Flex, Form, Input, Skeleton } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import actions from "../../action/actions";
+import styled from "styled-components";
 
 const formItemLayout = {
   labelCol: {
@@ -82,7 +83,7 @@ const Login = () => {
     >
       {loading ? (
         <div className="loader-overlay">
-          <Spin size="large" />
+          <Skeleton />
         </div>
       ) : (
         <Form

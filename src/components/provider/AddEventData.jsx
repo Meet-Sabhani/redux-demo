@@ -16,6 +16,7 @@ import { toast } from "react-toastify";
 import moment from "moment";
 import { useNavigate, useParams } from "react-router-dom";
 import slotsCalculate from "../../utils/slotsCalculate";
+import useCheckLogin from "../../utils/CheckLogin";
 
 const formItemLayout = {
   labelCol: {
@@ -39,6 +40,8 @@ const formItemLayout = {
 const { setEventsData, setEventIdCounterData } = actions;
 
 const AddEventData = () => {
+  useCheckLogin();
+
   const dispatch = useDispatch();
 
   const { eventsData } = useSelector((s) => s.events);

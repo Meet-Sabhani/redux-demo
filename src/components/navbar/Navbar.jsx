@@ -74,7 +74,7 @@ const Navbar = () => {
                 </Button>
               ) : (
                 <Button type="primary">
-                  <Link to={"/singUp"}> singUp</Link>
+                  <Link to={"/"}> Login</Link>
                 </Button>
               )}
             </Flex>
