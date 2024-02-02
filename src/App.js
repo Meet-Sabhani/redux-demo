@@ -5,7 +5,6 @@ import Login from "./components/login/Login";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Home from "./components/home/Home";
-import Provider from "./components/provider/Provider";
 import Navbar from "./components/navbar/Navbar";
 import AddEventData from "./components/provider/AddEventData";
 import EventPage from "./components/eventCads/EventPage";
@@ -30,7 +29,6 @@ function App() {
         <Route path="/singUp" element={<SingUp />} />
         <Route path="/" element={<Login />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/provider" element={<Provider />} />
         <Route path="/addEventData/:eventId" element={<AddEventData />} />
         <Route path="/addEventData" element={<AddEventData />} />
         <Route path="/detail/:productId" element={<EventPage />} />

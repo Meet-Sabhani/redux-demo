@@ -56,13 +56,7 @@ const Navbar = () => {
                 navigate(key);
               }}
             >
-              <Menu.Item
-                key={
-                  currentUserData.userType === "user" ? "/home" : "/provider"
-                }
-              >
-                Home
-              </Menu.Item>
+              <Menu.Item key="/home">Home</Menu.Item>
               <Menu.Item key="/singUp">SignUp</Menu.Item>
               <Menu.Item key="/about">About</Menu.Item>
             </Menu>

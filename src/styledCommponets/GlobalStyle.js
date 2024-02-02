@@ -13,6 +13,8 @@ body{
 label{
     color: #fff;
 }
+
+/* p: "#364B55", */
 `;
 
 export default GlobalStyle;

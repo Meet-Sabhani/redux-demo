@@ -104,7 +104,7 @@ const AddEventData = () => {
       toast.success("Event added successfully");
     }
 
-    navigate("/provider");
+    navigate("/home");
   };
 
   return (

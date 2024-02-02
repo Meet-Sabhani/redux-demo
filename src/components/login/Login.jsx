@@ -56,20 +56,21 @@ const Login = () => {
     );
 
     if (userMatch) {
-      setLoading(true);
+      // setLoading(true);
       toast.success("Login successfully");
       dispatch(setCurrentUserData(userMatch));
 
-      setTimeout(() => {
-        setLoading(false);
-        if (userMatch.userType === "user") {
-          navigate("/home");
-          setLoading(false);
-        } else {
-          navigate("/provider");
-          setLoading(false);
-        }
-      }, 500);
+      // setTimeout(() => {
+      //   setLoading(false);
+      //   if (userMatch.userType === "user") {
+      //     navigate("/home");
+      //     setLoading(false);
+      //   } else {
+      //     navigate("/provider");
+      //     setLoading(false);
+      //   }
+      // }, 500);
+      navigate("/home");
     } else {
       toast.error("email and password");
     }
