@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import actions from "../../action/actions";
 import { SingUpStyle } from "../../styledCommponets/SingUpStyle";
-import useLoginUserCheck from "../../utils/loginUserCheck";
 
 const formItemLayout = {
   labelCol: {
@@ -39,7 +38,6 @@ const tailFormItemLayout = {
 const { setCurrentUserData } = actions;
 
 const Login = () => {
-  useLoginUserCheck();
   const { registerData } = useSelector((s) => s.register);
 
   const [form] = Form.useForm();
@@ -55,7 +53,7 @@ const Login = () => {
     if (userMatch) {
       // setLoading(true);
       toast.success("Login successfully");
-      dispatch(setCurrentUserData(userMatch));
+      dispatch(setCurrentUserData({ userMatch }));
 
       // setTimeout(() => {
       //   setLoading(false);

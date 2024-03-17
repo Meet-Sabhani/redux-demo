@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 const useCheckLogin = () => {
   const navigate = useNavigate();
   const { currentUserData } = useSelector((s) => s.currentUser);
+  console.log("currentUserData: ", currentUserData);
 
   useEffect(() => {
     if (currentUserData == null || currentUserData === "") {

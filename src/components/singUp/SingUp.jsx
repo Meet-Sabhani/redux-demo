@@ -8,7 +8,6 @@ import actions from "../../action/actions";
 
 import { toast } from "react-toastify";
 import { SingUpStyle } from "../../styledCommponets/SingUpStyle";
-import useLoginUserCheck from "../../utils/loginUserCheck";
 const userTypeOptions = ["user", "Provider"];
 
 const { setLoginData, setUserIdCounterData } = actions;
@@ -44,8 +43,6 @@ const tailFormItemLayout = {
   },
 };
 const SingUp = () => {
-  useLoginUserCheck();
-
   const [form] = Form.useForm();
   const navigate = useNavigate();
 

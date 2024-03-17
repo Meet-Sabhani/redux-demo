@@ -1,7 +1,7 @@
 import actions from "../action/actions";
 
 const initialState = {
-  currentUserData: {},
+  currentUserData: "",
 };
 
 const currentUser = (state = initialState, action) => {
