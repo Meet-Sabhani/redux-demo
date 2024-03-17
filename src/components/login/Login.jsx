@@ -6,22 +6,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import actions from "../../action/actions";
 import styled from "styled-components";
+import { SingUpStyle } from "../../styledCommponets/SingUpStyle";
 
 const formItemLayout = {
   labelCol: {
     xs: {
       span: 24,
     },
-    sm: {
-      span: 8,
+    style: {
+      textAlign: "left",
     },
   },
   wrapperCol: {
     xs: {
       span: 24,
-    },
-    sm: {
-      span: 16,
     },
   },
 };
@@ -77,72 +75,63 @@ const Login = () => {
   };
 
   return (
-    <Flex
-      justify="center"
-      align="center"
-      style={{ minHeight: "80vh", padding: "4% 10%" }}
-    >
-      {loading ? (
-        <div className="loader-overlay">
-          <Skeleton />
-        </div>
-      ) : (
-        <Form
-          {...formItemLayout}
-          form={form}
-          name="register"
-          onFinish={onFinish}
-          initialValues={{
-            residence: ["zhejiang", "hangzhou", "xihu"],
-            prefix: "86",
-          }}
-          style={{
-            maxWidth: 600,
-          }}
-          scrollToFirstError
+    <SingUpStyle>
+      <Form
+        {...formItemLayout}
+        form={form}
+        name="register"
+        onFinish={onFinish}
+        initialValues={{
+          residence: ["zhejiang", "hangzhou", "xihu"],
+          prefix: "86",
+        }}
+        style={{
+          maxWidth: 600,
+        }}
+        scrollToFirstError
+        className="singUpFrom"
+      >
+        <Form.Item
+          name="email"
+          label="E-mail"
+          rules={[
+            {
+              type: "email",
+              message: "The input is not valid E-mail!",
+            },
+            {
+              required: true,
+              message: "Please input your E-mail!",
+            },
+          ]}
         >
-          <Form.Item
-            name="email"
-            label="E-mail"
-            rules={[
-              {
-                type: "email",
-                message: "The input is not valid E-mail!",
-              },
-              {
-                required: true,
-                message: "Please input your E-mail!",
-              },
-            ]}
-          >
-            <Input />
-          </Form.Item>
+          <Input />
+        </Form.Item>
 
-          <Form.Item
-            name="password"
-            label="Password"
-            rules={[
-              {
-                required: true,
-                message: "Please input your password!",
-              },
-            ]}
-            hasFeedback
-          >
-            <Input.Password />
-          </Form.Item>
+        <Form.Item
+          name="password"
+          label="Password"
+          rules={[
+            {
+              required: true,
+              message: "Please input your password!",
+            },
+          ]}
+          hasFeedback
+        >
+          <Input.Password />
+        </Form.Item>
 
-          <Form.Item {...tailFormItemLayout}>
-            <Button type="primary" htmlType="submit">
-              Login
-            </Button>
-          </Form.Item>
-          <div>
-            if you dont ahave accounyt <Link to="/singUp">SingUp</Link> here
-          </div>
-        </Form>
-      )}
-    </Flex>
+        <Form.Item {...tailFormItemLayout}>
+          <Button type="primary" htmlType="submit">
+            Login
+          </Button>
+        </Form.Item>
+        <div>
+          if you dont ahave accounyt <Link to="/singUp">SingUp</Link> here
+        </div>
+      </Form>
+    </SingUpStyle>
   );
 };
 

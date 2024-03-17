@@ -6,6 +6,7 @@ import { Link, useParams } from "react-router-dom";
 import "./EventPage.css";
 import { toast } from "react-toastify";
 import actions from "../../action/actions";
+import CardWrap from "./CardWrap";
 
 const cardStyle = {
   height: "fit-content",
@@ -16,7 +17,6 @@ const cardStyle = {
 const imgStyle = {
   width: "100%",
   height: "100%",
-  borderRadius: "10px",
   objectFit: "cover",
 };
 
@@ -116,7 +116,7 @@ const EventPage = () => {
           padding: 0,
         }}
       >
-        <Row gutter={[6, 6]}>
+        <Row>
           <Col xs={24} sm={24} md={24} lg={12} style={{ display: "flex" }}>
             <Image
               alt="avatar"
@@ -126,16 +126,16 @@ const EventPage = () => {
             />
           </Col>
           <Col xs={24} sm={24} md={24} lg={12}>
-            <Flex vertical align="center" justify="center" style={{}}>
+            <CardWrap>
               <h1>{matchingEvent.name}</h1>
-              <p>{matchingEvent.description}</p>
+              <h4>{matchingEvent.description}</h4>
               <h4>{moment(matchingEvent.date).format("L")}</h4>
               <h4>
                 {moment(matchingEvent.timeRange[0]).format("LTS")} -{" "}
                 {moment(matchingEvent.timeRange[1]).format("LTS")}
               </h4>
               <h3>duration: {matchingEvent.duration}</h3>
-              <Flex wrap="wrap" gap={6} justify="center">
+              <Flex wrap="wrap" gap={3} justify="center">
                 {matchingEvent.slots.map((e) => {
                   return (
                     <div
@@ -170,7 +170,7 @@ const EventPage = () => {
                   buy
                 </Button>
               )}
-            </Flex>
+            </CardWrap>
           </Col>
         </Row>
       </Card>

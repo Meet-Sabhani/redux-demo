@@ -17,6 +17,7 @@ import moment from "moment";
 import { useNavigate, useParams } from "react-router-dom";
 import slotsCalculate from "../../utils/slotsCalculate";
 import useCheckLogin from "../../utils/CheckLogin";
+import { SingUpStyle } from "../../styledCommponets/SingUpStyle";
 
 const formItemLayout = {
   labelCol: {
@@ -24,7 +25,10 @@ const formItemLayout = {
       span: 24,
     },
     sm: {
-      span: 6,
+      span: 24,
+    },
+    style: {
+      textAlign: "left",
     },
   },
   wrapperCol: {
@@ -32,7 +36,7 @@ const formItemLayout = {
       span: 24,
     },
     sm: {
-      span: 14,
+      // span: 14,
     },
   },
 };
@@ -108,134 +112,133 @@ const AddEventData = () => {
   };
 
   return (
-    <>
-      <Flex justify="center">
-        <Form
-          form={form}
-          {...formItemLayout}
-          variant="filled"
-          style={{
-            width: 433,
-          }}
-          onFinish={onFinish}
-          initialValues={{ duration: "30" }}
+    <SingUpStyle>
+      <Form
+        form={form}
+        {...formItemLayout}
+        variant="filled"
+        style={{
+          width: 433,
+        }}
+        onFinish={onFinish}
+        initialValues={{ duration: "30" }}
+        className="singUpFrom"
+      >
+        <Flex justify="center" style={{ padding: "5%" }}>
+          <h1>{matchingEvent ? "Edit" : "Add"} Event</h1>
+        </Flex>
+        <Form.Item
+          label="Name of event"
+          name="name"
+          rules={[
+            {
+              required: true,
+              message: "Please input!",
+            },
+          ]}
         >
-          <Flex justify="center" style={{ padding: "5%" }}>
-            <h1>{matchingEvent ? "Edit" : "Add"} Event</h1>
-          </Flex>
-          <Form.Item
-            label="Name of event"
-            name="name"
-            rules={[
-              {
-                required: true,
-                message: "Please input!",
-              },
-            ]}
-          >
-            <Input />
-          </Form.Item>
+          <Input />
+        </Form.Item>
 
-          <Form.Item
-            label="Image Url"
-            name="image"
-            rules={[
-              {
-                required: true,
-                message: "Please input!",
-              },
-            ]}
-          >
-            <Input />
-          </Form.Item>
+        <Form.Item
+          label="Image Url"
+          name="image"
+          rules={[
+            {
+              required: true,
+              message: "Please input!",
+            },
+          ]}
+        >
+          <Input />
+        </Form.Item>
 
-          <Form.Item
-            label="Price"
-            name="price"
-            rules={[
-              {
-                required: true,
-                message: "Please input!",
-              },
-            ]}
-          >
-            <InputNumber
-              style={{
-                width: "100%",
-              }}
-            />
-          </Form.Item>
+        <Form.Item
+          label="Price"
+          name="price"
+          rules={[
+            {
+              required: true,
+              message: "Please input!",
+            },
+          ]}
+        >
+          <InputNumber
+            style={{
+              width: "100%",
+            }}
+          />
+        </Form.Item>
 
-          <Form.Item
-            label="TextArea"
-            name="description"
-            rules={[
-              {
-                required: true,
-                message: "Please input!",
-              },
-            ]}
-          >
-            <Input.TextArea />
-          </Form.Item>
+        <Form.Item
+          label="TextArea"
+          name="description"
+          rules={[
+            {
+              required: true,
+              message: "Please input!",
+            },
+          ]}
+        >
+          <Input.TextArea />
+        </Form.Item>
 
-          <Form.Item
-            label="duration"
-            name="duration"
-            rules={[
-              {
-                required: true,
-                message: "Please input!",
-              },
-            ]}
+        <Form.Item
+          label="duration"
+          name="duration"
+          rules={[
+            {
+              required: true,
+              message: "Please input!",
+            },
+          ]}
+        >
+          <Select
+            style={{
+              width: 120,
+            }}
+            defaultValue="30"
           >
-            <Select
-              style={{
-                width: 120,
-              }}
-              defaultValue="30"
-            >
-              <Select.Option value="30">30 minis</Select.Option>
-              <Select.Option value="60">1 hour</Select.Option>
-              <Select.Option value="90">1.30 hours</Select.Option>
-              <Select.Option value="120">2 hours</Select.Option>
-            </Select>
-          </Form.Item>
+            <Select.Option value="30">30 minis</Select.Option>
+            <Select.Option value="60">1 hour</Select.Option>
+            <Select.Option value="90">1.30 hours</Select.Option>
+            <Select.Option value="120">2 hours</Select.Option>
+          </Select>
+        </Form.Item>
 
-          <Form.Item
-            label="select Date"
-            name="date"
-            rules={[
-              {
-                required: true,
-                message: "Please input!",
-              },
-            ]}
-          >
-            <DatePicker />
-          </Form.Item>
+        <Form.Item
+          label="select Date"
+          name="date"
+          rules={[
+            {
+              required: true,
+              message: "Please input!",
+            },
+          ]}
+        >
+          <DatePicker />
+        </Form.Item>
 
-          <Form.Item
-            label="Time"
-            name="timeRange"
-            rules={[
-              {
-                required: true,
-                message: "Please select TimePicker",
-              },
-            ]}
-          >
-            <TimePicker.RangePicker />
-          </Form.Item>
+        <Form.Item
+          label="Time"
+          name="timeRange"
+          rules={[
+            {
+              required: true,
+              message: "Please select TimePicker",
+            },
+          ]}
+        >
+          <TimePicker.RangePicker />
+        </Form.Item>
 
-          <Flex justify="center">
-            <Button type="primary" htmlType="submit">
-              Submit
-            </Button>
-          </Flex>
-        </Form>
-      </Flex>
-    </>
+        <Flex justify="center">
+          <Button type="primary" htmlType="submit">
+            Submit
+          </Button>
+        </Flex>
+      </Form>
+    </SingUpStyle>
   );
 };
 

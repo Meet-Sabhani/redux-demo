@@ -12,7 +12,7 @@ const Home = () => {
 
   return (
     <>
-      <Layout>
+      <>
         <Flex justify="center" gap={6} style={{ padding: "2%" }}>
           {currentUserData.userType === "Provider" ? (
             <>
@@ -30,7 +30,7 @@ const Home = () => {
           )}
         </Flex>
         <EventCard />
-      </Layout>
+      </>
     </>
   );
 };

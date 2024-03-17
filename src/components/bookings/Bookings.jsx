@@ -1,9 +1,9 @@
-import { Col, Flex, Row } from "antd";
+import { Col, Flex, Image, Row } from "antd";
 import React from "react";
 import { useSelector } from "react-redux";
 import useCheckLogin from "../../utils/CheckLogin";
 import Heading from "../../styledCommponets/Heading";
-import BookingCard from "../../styledCommponets/BookingCard";
+import BookingCard from "./BookingCard";
 import Container from "../../styledCommponets/Container";
 
 const Bookings = () => {
@@ -36,12 +36,12 @@ const Bookings = () => {
               return (
                 <Col key={i} span={8}>
                   <BookingCard>
-                    <h4> Name : {event.eventInfo.name}</h4>
-                    <img src={event.eventInfo.image} width={"100%"} alt="" />
-                    <h3>slots</h3>
+                    <img src={event.eventInfo.image} alt="" />
+                    <h4> Name of Event : {event.eventInfo.name}</h4>
+                    <h3>Booked slots</h3>
                     <Flex wrap="wrap" gap={6}>
                       {event.slots.map((s) => {
-                        return <div className="selected-slot">{s}</div>;
+                        return <div className="booked-slot">{s}</div>;
                       })}
                     </Flex>
                     <h3>user Name : {event.user.username}</h3>
@@ -57,12 +57,12 @@ const Bookings = () => {
               return (
                 <Col key={i} span={8}>
                   <BookingCard>
-                    <h4> Name : {event.eventInfo.name}</h4>
-                    <img src={event.eventInfo.image} alt="" />
-                    <h3>slots</h3>
+                    <Image src={event.eventInfo.image} alt="" />
+                    <h4> Name of Event : {event.eventInfo.name}</h4>
+                    <h3> Booked slots</h3>
                     <Flex wrap="wrap" gap={6}>
                       {event.slots.map((s) => {
-                        return <div className="selected-slot">{s}</div>;
+                        return <div className="booked-slot">{s}</div>;
                       })}
                     </Flex>
                   </BookingCard>

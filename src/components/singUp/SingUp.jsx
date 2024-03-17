@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Flex, Form, Input } from "antd";
+import { Button, Flex, Form, Input, Space } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 
 import { Radio } from "antd";
@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import actions from "../../action/actions";
 
 import { toast } from "react-toastify";
+import { SingUpStyle } from "../../styledCommponets/SingUpStyle";
 const userTypeOptions = ["user", "Provider"];
 
 const { setLoginData, setUserIdCounterData } = actions;
@@ -17,7 +18,10 @@ const formItemLayout = {
       span: 24,
     },
     sm: {
-      span: 8,
+      span: 24,
+    },
+    style: {
+      textAlign: "left", // Add this style to align label text left
     },
   },
   wrapperCol: {
@@ -25,7 +29,7 @@ const formItemLayout = {
       span: 24,
     },
     sm: {
-      span: 16,
+      // span: 16,
     },
   },
 };
@@ -33,11 +37,11 @@ const tailFormItemLayout = {
   wrapperCol: {
     xs: {
       span: 24,
-      offset: 0,
+      // offset: 8,
     },
     sm: {
-      span: 16,
-      offset: 8,
+      // span: 16,
+      // offset: 0,
     },
   },
 };
@@ -59,7 +63,7 @@ const SingUp = () => {
   };
 
   return (
-    <Flex justify="center" align="center" style={{ padding: "4% 10%" }}>
+    <SingUpStyle>
       <Form
         {...formItemLayout}
         form={form}
@@ -74,6 +78,7 @@ const SingUp = () => {
           width: 400,
         }}
         scrollToFirstError
+        className="singUpFrom"
       >
         <Form.Item
           label="Username"
@@ -153,17 +158,22 @@ const SingUp = () => {
           <Input.Password />
         </Form.Item>
         <Form.Item {...tailFormItemLayout}>
-          <Button type="primary" htmlType="submit">
-            Register
-          </Button>
+          <Flex justify="center">
+            <Button type="primary" htmlType="submit">
+              Register
+            </Button>
+          </Flex>
         </Form.Item>
-        <Flex justify="center">
-          <p>
-            already have an account <Link to="/"> Login </Link> here
-          </p>
+        <Flex justify="center" style={{ color: "#fff" }}>
+          already have an account
+          <Space>
+            {" "}
+            <Link to="/"> Login </Link>{" "}
+          </Space>
+          here
         </Flex>
       </Form>
-    </Flex>
+    </SingUpStyle>
   );
 };
 
