@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Flex, Layout } from "antd";
+import { Button, Flex } from "antd";
 import { Link } from "react-router-dom";
 import EventCard from "../eventCads/EventCard";
 import useCheckLogin from "../../utils/CheckLogin";

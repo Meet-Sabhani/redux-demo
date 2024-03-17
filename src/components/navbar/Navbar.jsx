@@ -1,9 +1,7 @@
-import { Button, Drawer, Flex, Modal, Menu } from "antd";
-import { Header } from "antd/es/layout/layout";
+import { Button, Drawer, Flex, Modal } from "antd";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import Slider from "../sliders/Slider";
 import actions from "../../action/actions";
 import { NavbarStyle } from "./NavbarStyle";
 import { MenuOutlined } from "@ant-design/icons";
@@ -89,7 +87,7 @@ const Navbar = () => {
           <Link to={"/home"}>Home</Link>
         </h3>
         <h3>Hello, {currentUserData?.username || "Guest"}</h3>
-        {currentUserData == null || "" ? (
+        {currentUserData == null || currentUserData == "" ? (
           <Button type="primary">
             <Link to={"/"}> Login</Link>
           </Button>
