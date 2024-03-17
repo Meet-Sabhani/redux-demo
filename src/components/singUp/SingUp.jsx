@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button, Flex, Form, Input, Space } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -8,6 +8,7 @@ import actions from "../../action/actions";
 
 import { toast } from "react-toastify";
 import { SingUpStyle } from "../../styledCommponets/SingUpStyle";
+import useCheckLogin from "../../utils/CheckLogin";
 const userTypeOptions = ["user", "Provider"];
 
 const { setLoginData, setUserIdCounterData } = actions;
@@ -21,15 +22,12 @@ const formItemLayout = {
       span: 24,
     },
     style: {
-      textAlign: "left", // Add this style to align label text left
+      textAlign: "left",
     },
   },
   wrapperCol: {
     xs: {
       span: 24,
-    },
-    sm: {
-      // span: 16,
     },
   },
 };
@@ -46,6 +44,8 @@ const tailFormItemLayout = {
   },
 };
 const SingUp = () => {
+  useCheckLogin();
+
   const [form] = Form.useForm();
   const navigate = useNavigate();
 

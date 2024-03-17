@@ -7,9 +7,7 @@ const useCheckLogin = () => {
   const { currentUserData } = useSelector((s) => s.currentUser);
 
   useEffect(() => {
-    currentUserData
-      ? console.log("currentUserData:", currentUserData)
-      : navigate("/");
+    currentUserData ? navigate("/home") : navigate("/");
   }, [currentUserData, navigate]);
 };
 

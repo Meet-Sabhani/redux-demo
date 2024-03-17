@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { Button, Flex, Form, Input, Skeleton } from "antd";
+import { Button, Form, Input } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import actions from "../../action/actions";
-import styled from "styled-components";
 import { SingUpStyle } from "../../styledCommponets/SingUpStyle";
+import useCheckLogin from "../../utils/CheckLogin";
 
 const formItemLayout = {
   labelCol: {
@@ -39,9 +39,9 @@ const tailFormItemLayout = {
 const { setCurrentUserData } = actions;
 
 const Login = () => {
-  const { registerData } = useSelector((s) => s.register);
+  useCheckLogin();
 
-  const [loading, setLoading] = useState(false);
+  const { registerData } = useSelector((s) => s.register);
 
   const [form] = Form.useForm();
 
