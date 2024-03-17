@@ -72,12 +72,12 @@ const Navbar = () => {
             <Link to={"/home"}>Home</Link>
           </h3>
           {currentUserData === null || "" ? (
+            <Link to={"/"}>
+              <Button type="primary">Login</Button>
+            </Link>
+          ) : (
             <Button type="primary" onClick={handleLogout}>
               Logout
-            </Button>
-          ) : (
-            <Button type="primary">
-              <Link to={"/"}> Login</Link>
             </Button>
           )}
         </Flex>
@@ -87,10 +87,10 @@ const Navbar = () => {
           <Link to={"/home"}>Home</Link>
         </h3>
         <h3>Hello, {currentUserData?.username || "Guest"}</h3>
-        {currentUserData == null || currentUserData == "" ? (
-          <Button type="primary">
-            <Link to={"/"}> Login</Link>
-          </Button>
+        {currentUserData === null || "" ? (
+          <Link to={"/"}>
+            <Button type="primary">Login</Button>
+          </Link>
         ) : (
           <Button type="primary" onClick={handleLogout}>
             Logout
