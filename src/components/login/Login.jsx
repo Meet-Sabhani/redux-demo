@@ -53,7 +53,7 @@ const Login = () => {
     if (userMatch) {
       // setLoading(true);
       toast.success("Login successfully");
-      dispatch(setCurrentUserData({ userMatch }));
+      dispatch(setCurrentUserData(userMatch));
 
       // setTimeout(() => {
       //   setLoading(false);

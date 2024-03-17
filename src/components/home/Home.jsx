@@ -43,7 +43,7 @@ const Home = () => {
               <Link to={"/bookings"}>
                 <Button type="primary">view Bookings</Button>{" "}
               </Link>
-            </>
+          </>
           ) : (
             <Link to={"/bookings"}>
               <Button type="primary">Bookings</Button>
