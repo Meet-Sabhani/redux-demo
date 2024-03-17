@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button, Form, Input } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import actions from "../../action/actions";
 import { SingUpStyle } from "../../styledCommponets/SingUpStyle";
-import useCheckLogin from "../../utils/CheckLogin";
 
 const formItemLayout = {
   labelCol: {
@@ -39,8 +38,6 @@ const tailFormItemLayout = {
 const { setCurrentUserData } = actions;
 
 const Login = () => {
-  useCheckLogin();
-
   const { registerData } = useSelector((s) => s.register);
 
   const [form] = Form.useForm();

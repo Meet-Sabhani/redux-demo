@@ -1,14 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  Button,
-  Card,
-  Col,
-  Flex,
-  Image,
-  Row,
-  Skeleton,
-  Typography,
-} from "antd";
+import { Button, Card, Col, Flex, Image, Row } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 import { Link } from "react-router-dom";
@@ -33,8 +24,6 @@ const EventCard = () => {
   const { eventsData } = useSelector((s) => s.events);
   console.log("eventsData: ", eventsData);
   const { currentUserData } = useSelector((s) => s.currentUser);
-
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (currentUserData.userType === "Provider") {

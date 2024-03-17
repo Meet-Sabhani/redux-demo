@@ -44,7 +44,6 @@ const tailFormItemLayout = {
   },
 };
 const SingUp = () => {
-  useCheckLogin();
 
   const [form] = Form.useForm();
   const navigate = useNavigate();

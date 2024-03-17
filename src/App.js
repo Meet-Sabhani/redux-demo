@@ -5,7 +5,6 @@ import "react-toastify/dist/ReactToastify.css";
 import GlobalStyle from "./styledCommponets/GlobalStyle";
 import Navbar from "./components/navbar/Navbar";
 import { Skeleton } from "antd";
-import { useSelector } from "react-redux";
 
 const SingUp = React.lazy(() => import("./components/singUp/SingUp"));
 const Login = React.lazy(() => import("./components/login/Login"));
