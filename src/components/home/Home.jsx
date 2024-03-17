@@ -1,15 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button, Flex } from "antd";
 import { Link } from "react-router-dom";
 import EventCard from "../eventCads/EventCard";
 import useCheckLogin from "../../utils/CheckLogin";
 import { useSelector } from "react-redux";
 import { driver } from "driver.js";
+import { HomeStyle } from "./HomeStyle";
 
 const Home = () => {
   useCheckLogin();
   const { currentUserData } = useSelector((s) => s.currentUser);
   console.log("currentUserData: ", currentUserData);
+
+  useEffect(() => {
+    driverObj.drive();
+  });
 
   const driverObj = driver({
     showProgress: true,
@@ -17,8 +22,8 @@ const Home = () => {
       {
         element: "#addEvent",
         popover: {
-          title: "Abracadabra!",
-          description: "Watch as I reveal the secrets of this element.",
+          title: "Add Event",
+          description: "click and Add event ",
         },
       },
     ],
@@ -26,7 +31,7 @@ const Home = () => {
 
   return (
     <>
-      <>
+      <HomeStyle>
         <Flex justify="center" gap={6} style={{ padding: "2%" }}>
           {currentUserData.userType === "Provider" ? (
             <>
@@ -46,7 +51,7 @@ const Home = () => {
           )}
         </Flex>
         <EventCard />
-      </>
+      </HomeStyle>
     </>
   );
 };

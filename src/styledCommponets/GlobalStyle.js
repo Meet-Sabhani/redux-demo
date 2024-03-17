@@ -26,6 +26,11 @@ body{
       color: #fff;
     }
   }
+  @media (max-width:778px) {
+    h1{
+      font-size: 24px;
+    }
+  }
 `;
 
 export default GlobalStyle;

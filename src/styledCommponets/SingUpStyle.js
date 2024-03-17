@@ -8,6 +8,7 @@ export const SingUpStyle = styled.div`
   min-height: 90vh;
   max-width: 1800px;
   margin: 0 auto;
+  padding: 20px 10%;
   .singUpFrom {
     color: #8ca3af;
     font-size: 16px;

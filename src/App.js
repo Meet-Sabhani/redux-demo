@@ -5,13 +5,14 @@ import "react-toastify/dist/ReactToastify.css";
 import GlobalStyle from "./styledCommponets/GlobalStyle";
 import Navbar from "./components/navbar/Navbar";
 import { Skeleton } from "antd";
-import 'driver.js/dist/driver.css';  
+import "driver.js/dist/driver.css";
+import Footer from "./components/footer/Footer";
 
 const SingUp = React.lazy(() => import("./components/singUp/SingUp"));
 const Login = React.lazy(() => import("./components/login/Login"));
 const Home = React.lazy(() => import("./components/home/Home"));
 const AddEventData = React.lazy(() =>
-  import("./components/provider/AddEventData")
+  import("./components/addEvent/AddEventData")
 );
 const EventPage = React.lazy(() => import("./components/eventCads/EventPage"));
 const Bookings = React.lazy(() => import("./components/bookings/Bookings"));
@@ -33,6 +34,7 @@ function App() {
           <Route path="*" element={<div>404 page not found</div>} />
         </Routes>
       </Suspense>
+      <Footer />
       <ToastContainer
         position="top-right"
         autoClose={3000}

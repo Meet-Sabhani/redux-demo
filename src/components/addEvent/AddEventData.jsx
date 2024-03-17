@@ -18,6 +18,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import slotsCalculate from "../../utils/slotsCalculate";
 import useCheckLogin from "../../utils/CheckLogin";
 import { SingUpStyle } from "../../styledCommponets/SingUpStyle";
+import { driver } from "driver.js";
 
 const formItemLayout = {
   labelCol: {
@@ -111,6 +112,53 @@ const AddEventData = () => {
     navigate("/home");
   };
 
+  useEffect(() => {
+    driverObj.drive();
+  });
+
+  const driverObj = driver({
+    showProgress: true,
+    steps: [
+      {
+        element: "#addEventPage",
+        popover: {
+          title: "Add Event details",
+          description:
+            "Easily create events by filling out this form with details including event name, description, date, price and etc.",
+        },
+      },
+      {
+        element: "#image",
+        popover: {
+          title: "Image",
+          description: "Enter the URL for your event image.",
+        },
+      },
+      {
+        element: "#timeRange",
+        popover: {
+          title: "Time Range",
+          description:
+            "Dynamic slot creation based on start time, end time, and duration.",
+        },
+      },
+      {
+        element: "#duration",
+        popover: {
+          title: "Duration",
+          description: "Select session duration for slot time.",
+        },
+      },
+      {
+        element: "#submitFrom",
+        popover: {
+          title: "Submit Form",
+          description: "Review your event details before submission.",
+        },
+      },
+    ],
+  });
+
   return (
     <SingUpStyle>
       <Form
@@ -124,8 +172,8 @@ const AddEventData = () => {
         initialValues={{ duration: "30" }}
         className="singUpFrom"
       >
-        <Flex justify="center" style={{ padding: "5%" }}>
-          <h1>{matchingEvent ? "Edit" : "Add"} Event</h1>
+        <Flex justify="center">
+          <h1 id="addEventPage">{matchingEvent ? "Edit" : "Add"} Event</h1>
         </Flex>
         <Form.Item
           label="Name of event"
@@ -149,6 +197,7 @@ const AddEventData = () => {
               message: "Please input!",
             },
           ]}
+          id="addImage"
         >
           <Input />
         </Form.Item>
@@ -171,7 +220,7 @@ const AddEventData = () => {
         </Form.Item>
 
         <Form.Item
-          label="TextArea"
+          label="Description"
           name="description"
           rules={[
             {
@@ -181,29 +230,6 @@ const AddEventData = () => {
           ]}
         >
           <Input.TextArea />
-        </Form.Item>
-
-        <Form.Item
-          label="duration"
-          name="duration"
-          rules={[
-            {
-              required: true,
-              message: "Please input!",
-            },
-          ]}
-        >
-          <Select
-            style={{
-              width: 120,
-            }}
-            defaultValue="30"
-          >
-            <Select.Option value="30">30 minis</Select.Option>
-            <Select.Option value="60">1 hour</Select.Option>
-            <Select.Option value="90">1.30 hours</Select.Option>
-            <Select.Option value="120">2 hours</Select.Option>
-          </Select>
         </Form.Item>
 
         <Form.Item
@@ -228,12 +254,37 @@ const AddEventData = () => {
               message: "Please select TimePicker",
             },
           ]}
+          id="timeRange"
         >
           <TimePicker.RangePicker />
         </Form.Item>
 
+        <Form.Item
+          label="duration"
+          name="duration"
+          rules={[
+            {
+              required: true,
+              message: "Please input!",
+            },
+          ]}
+          id="duration"
+        >
+          <Select
+            style={{
+              width: 120,
+            }}
+            defaultValue="30"
+          >
+            <Select.Option value="30">30 minis</Select.Option>
+            <Select.Option value="60">1 hour</Select.Option>
+            <Select.Option value="90">1.30 hours</Select.Option>
+            <Select.Option value="120">2 hours</Select.Option>
+          </Select>
+        </Form.Item>
+
         <Flex justify="center">
-          <Button type="primary" htmlType="submit">
+          <Button type="primary" htmlType="submit" id="submitFrom">
             Submit
           </Button>
         </Flex>
