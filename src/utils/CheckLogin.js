@@ -8,7 +8,7 @@ const useCheckLogin = () => {
   console.log("currentUserData: ", currentUserData);
 
   useEffect(() => {
-    if (currentUserData == null || currentUserData === "") {
+    if (currentUserData === "" || null) {
       navigate("/");
     }
   }, [currentUserData, navigate]);

@@ -71,7 +71,7 @@ const Navbar = () => {
           <h3>
             <Link to={"/home"}>Home</Link>
           </h3>
-          {currentUserData === null || "" ? (
+          {currentUserData === "" || null ? (
             <Link to={"/"}>
               <Button type="primary">Login</Button>
             </Link>
@@ -87,7 +87,7 @@ const Navbar = () => {
           <Link to={"/home"}>Home</Link>
         </h3>
         <h3>Hello, {currentUserData?.username || "Guest"}</h3>
-        {currentUserData === null || "" ? (
+        {currentUserData === "" || null ? (
           <Link to={"/"}>
             <Button type="primary">Login</Button>
           </Link>
